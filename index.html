@@ -81,6 +81,55 @@
   <script id="insert"></script>
 
 
+    <script>
+      const customConsole = (w) => {
+        const pushToConsole = (payload, type) => {
+          w.parent.postMessage({
+            console: {
+              payload: payload,
+              type:    type
+            }
+          }, "*")
+        }
+
+        w.onerror = (message, url, line, column) => {
+          // the line needs to correspond with the editor panel
+          // unfortunately this number needs to be altered every time this view is changed
+          line = line - 79
+          if (line < 0){
+            pushToConsole(message, "error")
+          } else {
+            pushToConsole(`[${line}:${column}] ${message}`, "error")
+          }
+        }
+
+        w.console = (function(){
+          return {
+            log: (payload) => {
+              pushToConsole(payload, "log")
+            },
+            info: (payload) => {
+              pushToConsole(payload, "info")
+            },
+            warn: (payload) => {
+              pushToConsole(payload, "warn")
+            },
+            error: (payload) => {
+              pushToConsole(payload, "error")
+            },
+            system: (payload) => {
+              pushToConsole(payload, "system")
+            }
+          }
+        }())
+
+        console.system("Running fiddle")
+      }
+
+      if (window.parent){
+        customConsole(window)
+      }
+    </script>
 </head>
 <body>
     <!-- TESTING UPDATE -->
@@ -102,7 +151,7 @@
       </p>
     </div>
     <div class="style-as-button" id="myButton" >
-    This is a button
+        <a href="#" >Helpful Tips</a>
     </div>
     <!-- column-container will hold 3 columns -->
     <div id="column-container">
@@ -219,9 +268,9 @@ function ButtonClicked() {
   } else {
     myButtonEl.style.backgroundColor = "blue";
   } */
-  name = prompt("what is your name?");
+  /* name = prompt("what is your name?");
   console.log(name);
-  myButtonEl.innerHTML = "Hello " + name;
+  myButtonEl.innerHTML = "Hello " + name; */
   // background-color backgroundColor background_color
 }
 myButtonEl.addEventListener('click', ButtonClicked);
@@ -248,7 +297,7 @@ myButtonEl.addEventListener('click', ButtonClicked);
     if (window.parent && window.parent.parent){
       window.parent.parent.postMessage(["resultsFrame", {
         height: document.body.getBoundingClientRect().height,
-        slug: ""
+        slug: "0zLs6ktq"
       }], "*")
     }
 
@@ -256,6 +305,22 @@ myButtonEl.addEventListener('click', ButtonClicked);
     window.name = "result"
   </script>
 
+    <script>
+      let allLines = []
+
+      window.addEventListener("message", (message) => {
+        if (message.data.console){
+          let insert = document.querySelector("#insert")
+          allLines.push(message.data.console.payload)
+          insert.innerHTML = allLines.join(";\r")
+
+          let result = eval.call(null, message.data.console.payload)
+          if (result !== undefined){
+            console.log(result)
+          }
+        }
+      })
+    </script>
 
 </body>
 </html>
