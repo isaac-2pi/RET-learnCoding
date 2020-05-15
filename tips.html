@@ -137,15 +137,15 @@ for (var i = 0; i < balls.length; i++) {
 <canvas class="myCanvas" id="myCanvas2" width="500" height="500"></canvas>
 	</div>
   <script>
-    var c = document.getElementById("myCanvas2");
-var ctx = c.getContext("2d");
+    var c2 = document.getElementById("myCanvas2");
+var ctx2 = c.getContext("2d");
 
-var slider = document.getElementById("size");
-var size = 10;
+var slider2 = document.getElementById("size");
+var size2 = 10;
 
-var clearCanvasButton = document.getElementById("clearCanvas");
+var clearCanvasButton2 = document.getElementById("clearCanvas");
 
-function draw(pos_x, pos_y, size, colour) {
+function draw2(pos_x, pos_y, size, colour) {
   ctx.beginPath();
   ctx.arc(pos_x, pos_y, size, 0, 2 * Math.PI, false);
   ctx.fillStyle = colour;
@@ -162,18 +162,18 @@ function getRandomColor() {
 }
 
 function SliderChange(value) {
-	size = value;
+	size2 = value;
     //console.log(size);
-    document.getElementById("currentSize").innerHTML = "Current size = " + size.toString();
+    document.getElementById("currentSize").innerHTML = "Current size = " + size2.toString();
 }
  
 function clearCanvas() {
-	ctx.clearRect(0, 0, c.width, c.height);
+	ctx2.clearRect(0, 0, c2.width, c2.height);
 } 
 
 c.addEventListener('mousemove', function(evt) {
 	var rect = c.getBoundingClientRect();
-    draw(evt.clientX - rect.left,evt.clientY - rect.top,size,getRandomColor());
+    draw2(evt.clientX - rect.left,evt.clientY - rect.top,size2,getRandomColor());
 });
 
 clearCanvasButton.addEventListener('click', clearCanvas);
@@ -189,46 +189,46 @@ clearCanvasButton.addEventListener('click', clearCanvas);
   <canvas class="myCanvas" id="myCanvas3" width="500" height="500"></canvas>
 	</div>
 	<script>
-		var c = document.getElementById("myCanvas3");
-var ctx = c.getContext("2d");
+		var c3 = document.getElementById("myCanvas3");
+var ctx3 = c.getContext("2d");
 
-var pos_x = 250;
-var pos_y = 250;
-var size = 5;
-var colour = "red";
+var pos_x3 = 250;
+var pos_y3 = 250;
+var size3 = 5;
+var colour3 = "red";
 
-function draw() {
-	ctx.fillstyle = colour;
-    ctx.fillRect(pos_x, pos_y, size, size);
+function draw3() {
+	ctx.fillstyle = colour3;
+    ctx.fillRect(pos_x3, pos_y3, size3, size3);
 }
 
-draw();
+draw3();
 
 function check(e) {
     //alert(e.keyCode);
     if (e.keyCode == 37) {
     	//alert("you pressed left");
         // add code to process movement
-        pos_x = pos_x - size;
-        draw();
+        pos_x3 = pos_x3 - size3;
+        draw3();
     }
     if (e.keyCode == 38) {
     	//alert("you pressed up");
         // add code to process movement
-        pos_y = pos_y - size;
-        draw();
+        pos_y3 = pos_y3 - size3;
+        draw3();
     }
     if (e.keyCode == 39) {
     	//alert("you pressed right");
         // add code to process movement
-        pos_x = pos_x + size;
-        draw();
+        pos_x3 = pos_x3 + size3;
+        draw3();
     }
     if (e.keyCode == 40) {
     	//alert("you pressed down");
         // add code to process movement
-        pos_y = pos_y + size;
-        draw();
+        pos_y3 = pos_y3 + size3;
+        draw3();
     }
 }
 
