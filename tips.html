@@ -146,10 +146,10 @@ var size2 = 10;
 var clearCanvasButton2 = document.getElementById("clearCanvas");
 
 function draw2(pos_x, pos_y, size, colour) {
-  ctx.beginPath();
-  ctx.arc(pos_x, pos_y, size, 0, 2 * Math.PI, false);
-  ctx.fillStyle = colour;
-  ctx.fill();
+  ctx2.beginPath();
+  ctx2.arc(pos_x, pos_y, size, 0, 2 * Math.PI, false);
+  ctx2.fillStyle = colour;
+  ctx2.fill();
 }
 
 function getRandomColor() {
@@ -172,7 +172,7 @@ function clearCanvas() {
 } 
 
 c.addEventListener('mousemove', function(evt) {
-	var rect = c.getBoundingClientRect();
+	var rect = c2.getBoundingClientRect();
     draw2(evt.clientX - rect.left,evt.clientY - rect.top,size2,getRandomColor());
 });
 
@@ -198,8 +198,8 @@ var size3 = 5;
 var colour3 = "red";
 
 function draw3() {
-	ctx.fillstyle = colour3;
-    ctx.fillRect(pos_x3, pos_y3, size3, size3);
+	ctx3.fillstyle = colour3;
+    ctx3.fillRect(pos_x3, pos_y3, size3, size3);
 }
 
 draw3();
