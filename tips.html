@@ -48,6 +48,10 @@
 
   <canvas id="myCanvas" width="500" height="500"></canvas>
 </div>
+  
+<br>
+  
+  
 
 
   <!-- TODO: Missing CoffeeScript 2 -->
@@ -113,7 +117,73 @@ for (var i = 0; i < balls.length; i++) {
 
 
   //]]></script>
+  
+  
+  <div>
+  <label for="points">Size (between 0 and 10):</label>
+  <input type="range" id="size" name="size" min="1" max="50" onchange="SliderChange(this.value)">
+  <p id="currentSize">
 
+  </p>
+</div>
+<div>
+  <div id="clearCanvas" class="style-as-button">
+    Click me to clear the canvas
+  </div>
+</div>
+
+<canvas id="myCanvas2" width="500" height="500"></canvas>
+
+  <script>
+    var c = document.getElementById("myCanvas2");
+var ctx = c.getContext("2d");
+
+var slider = document.getElementById("size");
+var size = 10;
+
+var clearCanvasButton = document.getElementById("clearCanvas");
+
+function draw(pos_x, pos_y, size, colour) {
+  ctx.beginPath();
+  ctx.arc(pos_x, pos_y, size, 0, 2 * Math.PI, false);
+  ctx.fillStyle = colour;
+  ctx.fill();
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function SliderChange(value) {
+	size = value;
+    //console.log(size);
+    document.getElementById("currentSize").innerHTML = "Current size = " + size.toString();
+}
+ 
+function clearCanvas() {
+	ctx.clearRect(0, 0, c.width, c.height);
+} 
+
+c.addEventListener('mousemove', function(evt) {
+	var rect = c.getBoundingClientRect();
+    draw(evt.clientX - rect.left,evt.clientY - rect.top,size,getRandomColor());
+});
+
+clearCanvasButton.addEventListener('click', clearCanvas);
+
+
+
+
+
+  </script>
+  
+  
+  
   <script>
     // tell the embed parent frame the height of the content
     if (window.parent && window.parent.parent){
