@@ -213,11 +213,13 @@ function check(e) {
         draw3();
     }
     if (e.keyCode == 38) {
-	    preventDefault(e);
+	    
     	//alert("you pressed up");
         // add code to process movement
         pos_y3 = pos_y3 - size3;
         draw3();
+	    preventDefault(e);
+	    return false;
     }
     if (e.keyCode == 39) {
     	//alert("you pressed right");
@@ -226,11 +228,13 @@ function check(e) {
         draw3();
     }
     if (e.keyCode == 40) {
-	    preventDefault(e);
+	    
     	//alert("you pressed down");
         // add code to process movement
         pos_y3 = pos_y3 + size3;
         draw3();
+	    preventDefault(e);
+	    return false;
     }
 }
 
