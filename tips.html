@@ -42,6 +42,8 @@
   <li>If your changes do not update it could be because the browser is chaching the page. turn off the cache</li>
   <li></li>
 </ol>
+	
+	<h3>Random Coloured Circles</h3>
 
 <div id="canvasContainer">
 
@@ -118,7 +120,7 @@ for (var i = 0; i < balls.length; i++) {
 
   //]]></script>
   
-  
+  <h3>Draw with Rainbows</h3>
   <div>
   <label for="points">Size (between 0 and 10):</label>
   <input type="range" id="size" name="size" min="1" max="50" onchange="SliderChange(this.value)">
@@ -182,7 +184,58 @@ clearCanvasButton.addEventListener('click', clearCanvas);
 
   </script>
   
-  
+	<h3>Etch-a-sketch</h3>
+	
+  <canvas class="myCanvas" id="myCanvas3" width="500" height="500"></canvas>
+	
+	<script>
+		var c = document.getElementById("myCanvas3");
+var ctx = c.getContext("2d");
+
+var pos_x = 250;
+var pos_y = 250;
+var size = 5;
+var colour = "red";
+
+function draw() {
+	ctx.fillstyle = colour;
+    ctx.fillRect(pos_x, pos_y, size, size);
+}
+
+draw();
+
+function check(e) {
+    //alert(e.keyCode);
+    if (e.keyCode == 37) {
+    	//alert("you pressed left");
+        // add code to process movement
+        pos_x = pos_x - size;
+        draw();
+    }
+    if (e.keyCode == 38) {
+    	//alert("you pressed up");
+        // add code to process movement
+        pos_y = pos_y - size;
+        draw();
+    }
+    if (e.keyCode == 39) {
+    	//alert("you pressed right");
+        // add code to process movement
+        pos_x = pos_x + size;
+        draw();
+    }
+    if (e.keyCode == 40) {
+    	//alert("you pressed down");
+        // add code to process movement
+        pos_y = pos_y + size;
+        draw();
+    }
+}
+
+window.addEventListener('keydown',check);
+
+
+	</script>
   
   <script>
     // tell the embed parent frame the height of the content
