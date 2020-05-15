@@ -145,10 +145,12 @@ var size2 = 10;
 
 var clearCanvasButton2 = document.getElementById("clearCanvas");
 
-function draw2(pos_x, pos_y, size, colour) {
+function draw2(pos_x2, pos_y2, size, colour2) {
+  console.log("draw on canvas2");
+  console.log(pos_x2);
   ctx2.beginPath();
-  ctx2.arc(pos_x, pos_y, size2, 0, 2 * Math.PI, false);
-  ctx2.fillStyle = colour;
+  ctx2.arc(pos_x2, pos_y2, size2, 0, 2 * Math.PI, false);
+  ctx2.fillStyle = colour2;
   ctx2.fill();
 }
 
