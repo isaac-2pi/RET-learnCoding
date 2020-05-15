@@ -173,7 +173,7 @@ function clearCanvas() {
 	ctx2.clearRect(0, 0, c2.width, c2.height);
 } 
 
-c.addEventListener('mousemove', function(evt) {
+c2.addEventListener('mousemove', function(evt) {
 	var rect = c2.getBoundingClientRect();
     draw2(evt.clientX - rect.left,evt.clientY - rect.top,size2,getRandomColor());
 });
@@ -220,7 +220,7 @@ function check(e) {
         // add code to process movement
         pos_y3 = pos_y3 - size3;
         draw3();
-	    preventDefault(e);
+	    e.preventDefault();;
 	    return false;
     }
     if (e.keyCode == 39) {
@@ -235,7 +235,7 @@ function check(e) {
         // add code to process movement
         pos_y3 = pos_y3 + size3;
         draw3();
-	    preventDefault(e);
+	    e.preventDefault();
 	    return false;
     }
 }
