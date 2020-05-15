@@ -45,6 +45,9 @@
 	
 	<h3>Random Coloured Circles</h3>
 
+	<div id="clearCanvas1" class="style-as-button">
+    Click me to refresh
+  </div>
 <div class="canvasContainer">
 
 
@@ -95,23 +98,33 @@ class ball {
 
 }
 
-for (var i = 0; i < numberOfBalls; i++) {
-  var size = Math.floor((Math.random() * maxSize) + 1);
-  var newColour = colourList[Math.floor((Math.random() * colourList.length))];
-  var x = Math.random() * c.width;
-  var y = Math.random() * c.height;
-  balls[i] = new ball(size, newColour, 0, x, y)
+function go() {
+	  
+	for (var i = 0; i < numberOfBalls; i++) {
+	  var size = Math.floor((Math.random() * maxSize) + 1);
+	  var newColour = colourList[Math.floor((Math.random() * colourList.length))];
+	  var x = Math.random() * c.width;
+	  var y = Math.random() * c.height;
+	  balls[i] = new ball(size, newColour, 0, x, y)
+	}
+
+	//console.log(balls);
+
+	for (var i = 0; i < balls.length; i++) {
+	  balls[i].draw();
+	}
 }
+	 
+go();
 
-//console.log(balls);
+var clearCanvasButton1 = document.getElementById("clearCanvas1");
 
-for (var i = 0; i < balls.length; i++) {
-  balls[i].draw();
-}
-
-
-
-
+function clearCanvas1() {
+	ctx.clearRect(0, 0, c.width, c.height);
+	go();
+} 
+	  
+clearCanvasButton1.addEventListener('click', clearCanvas1);
 
 
 
