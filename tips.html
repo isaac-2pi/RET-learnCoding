@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="/js/lib/dummy.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+
+  <style id="compiled-css" type="text/css">
+      #myCanvas {
+  /* float: middle; */
+  margin: auto;
+  border: solid 1px black;
+}
+
+#canvasContainer {
+  width: 500px;
+  margin: auto;
+}
+
+#myHeading {
+    background-color: #BF4C41;
+}
+
+#page-container {
+    background-color: #E1E2E7;
+
+}
+
+#myImage {
+    padding: 0% 35%;
+    width: 30%;
+    height:30%;
+}
+
+#test {
+    /*width: 50%; */
+    /* float: right; */
+}
+
+#column-container {
+    height: 200px;
+}
+
+.text-bourder {
+    border: solid 4px #98042D;
+    background-color: #FCC0C5;
+}
+
+.columnsClass {
+    float: left;
+    width: 24%;
+}
+
+.text-center {
+    text-align: center;
+    font-weight: bold;
+}
+
+.style-as-button {
+    background-color: orange;
+    width: 100px;
+    /*height: 100px; */
+    padding: 16px;
+    border: solid 1px black;
+    float: none;
+    text-align: center;
+    border-radius: 25px;
+    color: white;
+}
+
+
+
+
+
+
+  </style>
+
+  <script id="insert"></script>
+
+
+</head>
+<body>
+    <h1 id="myHeading" class="text-center">
+  Helpful Tips
+</h1>
+<br>
+<div>
+  <img id="myImage" src="https://github.com/isaac-2pi/RET-learnCoding/blob/master/default.png?raw=true" alt="Coding is fun">
+</div>
+<div class="style-as-button" id="myButton">
+  <a href="#">Home</a>
+</div>
+
+<ol>
+  <li>USE GOOGLE</li>
+</ol>
+
+<div id="canvasContainer">
+
+
+  <canvas id="myCanvas" width="500" height="500"></canvas>
+</div>
+
+
+  <!-- TODO: Missing CoffeeScript 2 -->
+
+  <script type="text/javascript">//<![CDATA[
+
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+var numberOfBalls = 100;
+var maxSize = 50;
+var colourList = ["red", "blue", "green", "yellow", "pink"];
+
+var balls = [];
+
+class ball {
+  constructor(size, colour, speed, position_x, position_y) {
+    console.log("hello");
+    this.size = size;
+    this.colour = colour;
+    this.speed = speed;
+    this.position_x = position_x;
+    this.position_y = position_y;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.position_x, this.position_y, this.size, 0, 2 * Math.PI, false);
+    ctx.fillStyle = this.colour;
+    ctx.fill();
+  }
+
+}
+
+for (var i = 0; i < numberOfBalls; i++) {
+  var size = Math.floor((Math.random() * maxSize) + 1);
+  var newColour = colourList[Math.floor((Math.random() * colourList.length))];
+  var x = Math.random() * c.width;
+  var y = Math.random() * c.height;
+  balls[i] = new ball(size, newColour, 0, x, y)
+}
+
+console.log(balls);
+
+for (var i = 0; i < balls.length; i++) {
+  balls[i].draw();
+}
+
+
+
+
+
+
+
+
+
+
+  //]]></script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: ""
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+
+</body>
+</html>
