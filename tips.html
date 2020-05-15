@@ -55,16 +55,23 @@
   <script type="text/javascript">//<![CDATA[
 
 
+// get the canvas element
 var c = document.getElementById("myCanvas");
+// need to set the context to 2d and store it for later
 var ctx = c.getContext("2d");
 
+// change this to adjust the number of circles
 var numberOfBalls = 100;
+// circles will have random size up to this radius
 var maxSize = 50;
+// list of possible colours for circles
 var colourList = ["red", "blue", "green", "yellow", "pink"];
-
+// list to hold generated circles. 
 var balls = [];
 
+// ball class. each ball shares this class but has different values for the parameters
 class ball {
+  // this function creates copies of the class and sets the parameters
   constructor(size, colour, speed, position_x, position_y) {
     console.log("hello");
     this.size = size;
